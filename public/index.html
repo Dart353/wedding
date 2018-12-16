@@ -1,0 +1,44 @@
+<DOCTYPE html>
+    <html lang="en">
+    <heading>
+        <title>The Alex's Wedding Upload</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Alex Suess">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/views/main.css">
+        <link rel="stylesheet" href="css/7-stroke/assets/Pe-icon-7-stroke.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="js/views/main.js" defer></script>
+    </heading>
+
+    <body>
+        <div id="transBackground">
+            <div>
+                <h1>Wedding Upload</h1>
+                <p>To all of our guests, we thank you with the upmost sincerity for making our wedding day the most memorable experience. You all hold a special place in our hearts and we are grateful for each and every one of you. We hope you had an unforgettable night as we surely did. We ask one last thing from you, would you share your unforgettable moments with us and upload any photos or videos you personally took to our webpage? We’d love to see all the photos you took! Once again, we thank you friends and family for sharing this night with us.<br /><br />
+                    Love, the Alex’s
+                </p>
+            </div>
+            <div>
+                <form style="text-align: center;" action="/upload" enctype="multipart/form-data" method="POST">
+
+                    <textarea class="textBox" name="message" rows="10" cols="50" placeholder="Share your favorite moment..."></textarea>
+                    <div id=uploadBtn>
+                        <label class="uploadBtn">
+                            <input type="file" id="photo" name="photo" multiple accept="image/*,video/*,audio/*" />
+                            Attach Images
+                        </label>
+                    </div>
+                    <div id="submitBtn">
+                        <input class="submitBtn" type="submit" name="Upload" value="Upload Photo" /><!--This is hidden by css-->
+                        <!---the i element below is replaced by the span tag. Change back if you want to use the upload icon ----->
+<!--                        <i class="pe-7s-cloud-upload upload"></i>-->
+                        <span class="submitBtn upload">Click To Upload!</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+
+    </html>

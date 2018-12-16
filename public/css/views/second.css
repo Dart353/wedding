@@ -1,0 +1,27 @@
+/*
+html {
+    background-color: black;
+}
+*/
+
+
+body {
+/*        height: 100%;*/
+    /*    height: -webkit-fill-available;*/
+    background-image: url(../../images/fell-in-love.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+/*    background-size:contain;*/
+    font-family: 'Tangerine', cursive;
+/*    text-align: center;*/
+    color: whitesmoke;
+}
+
+div {
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    right: auto;*/
+    font-size: 6.250em;
+    color: black;
+}

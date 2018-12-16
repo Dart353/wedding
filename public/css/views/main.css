@@ -1,0 +1,91 @@
+html {
+    /*    height: 100%;*/
+    /*    height: -webkit-fill-available;*/
+    background-image: url(../../images/weddingbackground.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: whitesmoke;
+    font-family: 'Playfair Display', serif;
+}
+
+#transBackground {
+    background: rgba(105, 105, 105, 0.5);
+    background-size: contain;
+    text-align: center;
+    margin: 10px 25px;
+    height: auto;
+    /*    height: 100%;*/
+    /*    height: -webkit-fill-available;*/
+}
+
+.textBox {
+    background: rgba(0, 0, 0, 0.8);
+    color: whitesmoke;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+form textarea {
+    width: 100%;
+}
+
+input[type=submit],
+input[type=file] {
+    display: none;
+    /*
+  background: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+*/
+}
+
+
+.upload {
+    cursor: pointer;
+}
+
+
+#uploadBtn {
+    margin: 1em;
+}
+
+#submitBtn {
+    padding-bottom: .7em;
+}
+
+.uploadBtn {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.uploadBtn:hover {
+    background: rgba(2, 69, 94, 0.7);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.submitBtn {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background: rgba(2, 69, 94, 0.7);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
