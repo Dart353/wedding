@@ -29,6 +29,8 @@
 
       function Upload(url, data, file, callback, progress) {
         var formData = new FormData();
+
+
         var xhr = new XMLHttpRequest();
 
         formData.append("file", file, file.name);
