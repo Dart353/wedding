@@ -1,44 +1,99 @@
 <DOCTYPE html>
-    <html lang="en">
-    <heading>
-        <title>The Alex's Wedding Upload</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Alex Suess">
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/views/main.css">
-        <link rel="stylesheet" href="css/7-stroke/assets/Pe-icon-7-stroke.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="js/views/main.js" defer></script>
-    </heading>
+  <html lang="en">
+  <heading>
+    <title>The Alex's Wedding Upload</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Alex Suess">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/views/main.css">
+    <link rel="stylesheet" href="css/7-stroke/assets/Pe-icon-7-stroke.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/views/main.js" defer></script>
+    <script>
 
-    <body>
-        <div id="transBackground">
-            <div>
-                <h1>Wedding Upload</h1>
-                <p>To all of our guests, we thank you with the upmost sincerity for making our wedding day the most memorable experience. You all hold a special place in our hearts and we are grateful for each and every one of you. We hope you had an unforgettable night as we surely did. We ask one last thing from you, would you share your unforgettable moments with us and upload any photos or videos you personally took to our webpage? We’d love to see all the photos you took! Once again, we thank you friends and family for sharing this night with us.<br /><br />
-                    Love, the Alex’s
-                </p>
-            </div>
-            <div>
-                <form style="text-align: center;" action="/upload" enctype="multipart/form-data" method="POST">
 
-                    <textarea class="textBox" name="message" rows="10" cols="50" placeholder="Share your favorite moment..."></textarea>
-                    <div id=uploadBtn>
-                        <label class="uploadBtn">
-                            <input type="file" id="photo" name="photo" multiple accept="image/*,video/*,audio/*" />
-                            Attach Images
-                        </label>
-                    </div>
-                    <div id="submitBtn">
-                        <input class="submitBtn" type="submit" name="Upload" value="Upload Photo" /><!--This is hidden by css-->
-                        <!---the i element below is replaced by the span tag. Change back if you want to use the upload icon ----->
-<!--                        <i class="pe-7s-cloud-upload upload"></i>-->
-                        <span class="submitBtn upload">Click To Upload!</span>
-                    </div>
-                </form>
-            </div>
+      function UploadImageAndText() {
+              var file = $('input#photo')[0].files[0];
+              if(!file) {
+                alert('choose a photo');
+                return;
+              }
+
+              var text = $('textarea')[0].value;
+              Upload(url)
+      }
+
+      function Upload(url, data, file, callback, progress) {
+        var formData = new FormData();
+        var xhr = new XMLHttpRequest();
+
+        formData.append("file", file, file.name);
+        // formData.append("token", token);
+
+        for (var i in data) {
+          formData.append(i, data[i]);
+        }
+
+        xhr.open("POST", url, true);
+        // xhr.setRequestHeader('token', token);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              callback(xhr.responseText);
+              // console.log(xhr.responseText);
+            } else {
+              callback(xhr.responseText);
+              // console.error(xhr.statusText);
+            }
+          }
+        };
+
+        xhr.upload.onprogress = function (e) {
+          progress(Math.floor(e.loaded / e.total * 100));
+          // console.log(Math.floor(e.loaded / e.total *100) + '%');
+        };
+
+        xhr.send(formData);
+      }
+    </script>
+  </heading>
+
+  <body>
+  <div id="transBackground">
+    <div>
+      <h1>Wedding Upload</h1>
+      <p>To all of our guests, we thank you with the upmost sincerity for making our wedding day the most memorable
+        experience. You all hold a special place in our hearts and we are grateful for each and every one of you. We
+        hope you had an unforgettable night as we surely did. We ask one last thing from you, would you share your
+        unforgettable moments with us and upload any photos or videos you personally took to our webpage? We’d love to
+        see all the photos you took! Once again, we thank you friends and family for sharing this night with
+        us.<br/><br/>
+        Love, the Alex’s
+      </p>
+    </div>
+    <div>
+      <form style="text-align: center;" action="/upload" enctype="multipart/form-data" method="POST">
+
+        <textarea class="textBox" name="message" rows="10" cols="50"
+                  placeholder="Share your favorite moment..."></textarea>
+        <div id=uploadBtn>
+          <label class="uploadBtn">
+            <input type="file" id="photo" name="photo" multiple accept="image/*,video/*,audio/*"/>
+            Attach Images
+          </label>
         </div>
-    </body>
+        <div id="submitBtn">
+                        <input class="submitBtn" type="submit" name="Upload" value="Upload Photo" /><!--This is hidden by css-->
+          <!---the i element below is replaced by the span tag. Change back if you want to use the upload icon ----->
+          <!--                        <i class="pe-7s-cloud-upload upload"></i>-->
+          <span class="submitBtn upload">Click To Upload!</span>
+          <button onclick="UploadImageAndText"> Upload Jquery</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </body>
 
-    </html>
+  </html>
