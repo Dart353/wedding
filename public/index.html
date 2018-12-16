@@ -11,17 +11,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/views/main.js" defer></script>
     <script>
-
+      function UploadText() {
+        var text = $('textarea')[0].value;
+        Upload('/upload', {text: text}, file, console.log);
+      }
 
       function UploadImageAndText() {
-              var file = $('input#photo')[0].files[0];
-              if(!file) {
-                alert('choose a photo');
-                return;
-              }
+        var file = $('input#photo')[0].files[0];
+        if (!file) {
+          alert('choose a photo');
+          return;
+        }
 
-              var text = $('textarea')[0].value;
-              Upload(url)
+        var text = $('textarea')[0].value;
+        Upload('/upload', {text: text}, file, console.log);
       }
 
       function Upload(url, data, file, callback, progress) {
@@ -85,13 +88,13 @@
           </label>
         </div>
         <div id="submitBtn">
-                        <input class="submitBtn" type="submit" name="Upload" value="Upload Photo" /><!--This is hidden by css-->
+          <input class="submitBtn" type="submit" name="Upload" value="Upload Photo"/><!--This is hidden by css-->
           <!---the i element below is replaced by the span tag. Change back if you want to use the upload icon ----->
           <!--                        <i class="pe-7s-cloud-upload upload"></i>-->
           <span class="submitBtn upload">Click To Upload!</span>
-          <button onclick="UploadImageAndText"> Upload Jquery</button>
         </div>
       </form>
+      <button onclick="UploadText()">Upload text</button>
     </div>
   </div>
   </body>
